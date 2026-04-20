@@ -1,2 +1,4 @@
 class Pagamento:
-    pass
+
+    def processar_pagamento(self, limite):
+        raise Exception("não tem limite suficiente")
