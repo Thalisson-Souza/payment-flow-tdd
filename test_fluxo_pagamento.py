@@ -16,3 +16,5 @@ class TestFluxoPagamento(TestCase):
         resultado = pagamento.processar_pagamento(100)
 
         self.assertTrue(resultado)
+
+    
