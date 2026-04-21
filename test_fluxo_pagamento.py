@@ -13,6 +13,11 @@ class TestFluxoPagamento(TestCase):
     def test_nao_deve_processar_pagamento_com_valor_negativo(self):
         pagamento = Pagamento()
 
+        self.assertRaises(ValueError, pagamento.processar_pagamento, -10)
+
+    def test_nao_deve_processar_pagamento_com_valor_zerado(self):
+        pagamento = Pagamento()
+
         self.assertRaises(ValueError, pagamento.processar_pagamento, 0)
 
 
