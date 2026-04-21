@@ -37,10 +37,16 @@ class TestFluxoPagamento(TestCase):
 
         self.assertRaises(ValueError, pagamento.processar_pagamento, 200, saldo_zerado)
 
-
-
     
     def test_nao_deve_processar_pagamento_com_saldo_informado_de_tipo_invalido(self):
         pagamento = Pagamento()
 
         self.assertRaises(TypeError, pagamento.processar_pagamento, 100, "quinhentos")
+
+    
+    #“o sistema ainda não suporta método de pagamento”
+    def test_deve_processar_pagamento_com_metodo_pix(self):
+        pagamento = Pagamento()
+
+        resultado = pagamento.processar_pagamento(100, 500, "pix")
+        self.assertTrue(resultado)
