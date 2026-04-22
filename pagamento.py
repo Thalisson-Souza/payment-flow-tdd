@@ -1,8 +1,5 @@
 class Pagamento:
 
-    
-
-
     def processar_pagamento(self, valor_pagamento, saldo_disponivel, metodo_pagamento):
         if not isinstance(valor_pagamento, (float, int)):
             raise TypeError("valor do pagamento não é um numero")
@@ -14,7 +11,7 @@ class Pagamento:
             raise ValueError("valor do pagamento não pode ser negativo ou 0")
         
 
-        if metodo_pagamento != "pix":
+        if metodo_pagamento not in ("pix", "cartão de crédito"):
             raise ValueError("modalidade nao aceita agora...")
 
         
