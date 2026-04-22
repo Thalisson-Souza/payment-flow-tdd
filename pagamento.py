@@ -11,7 +11,7 @@ class Pagamento:
             raise ValueError("valor do pagamento não pode ser negativo ou 0")
         
 
-        if metodo_pagamento not in ("pix", "cartão de crédito", "débito"):
+        if metodo_pagamento not in ("pix", "crédito", "débito"):
             raise ValueError("modalidade nao aceita agora...")
 
         
