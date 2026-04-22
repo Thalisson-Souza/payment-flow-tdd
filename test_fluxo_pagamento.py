@@ -45,24 +45,24 @@ class TestFluxoPagamento(TestCase):
 
     
     #“o sistema ainda não suporta método de pagamento”
-    def test_deve_processar_pagamento_com_metodo_pix(self):
+    def test_deve_processar_pagamento_quando_metodo_for_pix(self):
         pagamento = Pagamento()
 
         resultado = pagamento.processar_pagamento(100, 500, "pix")
         self.assertTrue(resultado)
 
-    def test_nao_deve_processar_pagamento_com_metodo_invalido(self):
+    def test_nao_deve_processar_pagamento_quando_metodo_for_invalido(self):
         pagamento = Pagamento()
 
         self.assertRaises(ValueError, pagamento.processar_pagamento, 100, 500, "boleto")
 
-    def test_deve_processar_pagamento_com_metodo_cartao_de_credito(self):
+    def test_deve_processar_pagamento_quando_metodo_for_credito(self):
         pagamento = Pagamento()
 
-        resultado = pagamento.processar_pagamento(100, 500, "cartão de crédito")
+        resultado = pagamento.processar_pagamento(100, 500, "crédito")
         self.assertTrue(resultado)
 
-    def test_deve_processar_pagamento_com_metodo_cartao_de_debito(self):
+    def test_deve_processar_pagamento_quando_metodo_for_debito(self):
         pagamento = Pagamento()
 
         resultado = pagamento.processar_pagamento(100, 500, "débito")
