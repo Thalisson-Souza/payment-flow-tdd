@@ -61,3 +61,9 @@ class TestFluxoPagamento(TestCase):
 
         resultado = pagamento.processar_pagamento(100, 500, "cartão de crédito")
         self.assertTrue(resultado)
+
+    def test_deve_processar_pagamento_com_metodo_cartao_de_debito(self):
+        pagamento = Pagamento()
+
+        resultado = pagamento.processar_pagamento(100, 500, "débito")
+        self.assertTrue(resultado)
