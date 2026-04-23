@@ -1,12 +1,15 @@
 from enum import Enum
+
 class MetodoDePagamento(Enum):
-    PIX = "pix"
-    CREDITO = "crédito"
-    DEBITO = "débito"
+    PIX = 0.0
+    CREDITO = 0.05
+    DEBITO = 0.0
+
+    @property
+    def taxa(self):
+        return self.value
     
 class Pagamento:
-    TAXA_CREDITO = 0.05
-
     def validar_pagamento(self, valor_pagamento, saldo_disponivel, metodo_pagamento):
         if not isinstance(valor_pagamento, (float, int)):
             raise TypeError("valor do pagamento não é um numero")
@@ -18,8 +21,8 @@ class Pagamento:
             raise ValueError("valor do pagamento não pode ser negativo ou 0")
         
 
-        if metodo_pagamento not in MetodoDePagamento:
-            raise ValueError("modalidade nao aceita agora...")
+        if not isinstance(metodo_pagamento, MetodoDePagamento):
+            raise TypeError("modalidade nao aceita agora...")
 
     
         valor_final = self._calcular_valor_final(valor_pagamento, metodo_pagamento)
@@ -34,8 +37,5 @@ class Pagamento:
 
 
     def _calcular_valor_final(self, valor_base, metodo_pagamento):
-        if metodo_pagamento != "crédito":
-            return valor_base
+        return valor_base + (valor_base * metodo_pagamento.taxa)
         
-        taxa_credito = valor_base * self.TAXA_CREDITO
-        return valor_base + taxa_credito
