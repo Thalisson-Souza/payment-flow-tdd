@@ -1,3 +1,9 @@
+from enum import Enum
+class MetodoDePagamento(Enum):
+    PIX = "pix"
+    CREDITO = "crédito"
+    DEBITO = "débito"
+    
 class Pagamento:
     TAXA_CREDITO = 0.05
 
@@ -12,7 +18,7 @@ class Pagamento:
             raise ValueError("valor do pagamento não pode ser negativo ou 0")
         
 
-        if metodo_pagamento not in ("pix", "crédito", "débito"):
+        if metodo_pagamento not in MetodosDePagamentos:
             raise ValueError("modalidade nao aceita agora...")
 
     
